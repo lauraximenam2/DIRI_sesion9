@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .enrolForm {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+
+  .enrolForm h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+
+  .enrolForm label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+
+  .enrolForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+
+  .enrolForm input[type="text"]:focus {
+    border-color: #3e92cc;
+    outline: none;
+  }
+  
+  .enrolForm input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #3e92cc;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .enrolForm input[type="submit"]:hover {
+    background-color: #3489b0;
+  }
+  
+
+  @media (max-width: 480px) {
+    .enrolForm {
+      padding: 15px;
+    }
+    .enrolForm h2 {
+      font-size: 20px;
+    }
+  }
+  

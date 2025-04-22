@@ -1,86 +1,145 @@
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7fa;
+:root {
+  /* Colors */
+  --primary-color: #3e92cc; /* Your blue */
+  --primary-color-darker: #3489b0; /* Darker shade for hover */
+  --text-color-primary: #333333;
+  --text-color-secondary: #555555;
+  --text-color-light: #ffffff;
+  --background-body: #f4f7fa; /* Light gray */
+  --background-card: #ffffff; /* White */
+  --background-subtle: #f8f9fa; /* Very light gray */
+  --border-color-light: #e0e0e0; /* Lighter border */
+  --border-color-medium: #cccccc; /* Medium border */
+  --focus-ring-color: rgba(62, 146, 204, 0.4); /* Semi-transparent primary for focus */
+  --success-color: #28a745; /* Optional: for success messages */
+  --error-color: #dc3545; /* Optional: for error messages */
+
+  /* Typography */
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-size-small: 0.875rem; /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-large: 1.125rem; /* 18px */
+  --font-size-xl: 1.5rem;   /* 24px */
+  --font-weight-normal: 400;
+  --font-weight-bold: 600; /* Slightly bolder than default bold */
+
+  /* Spacing & Sizing */
+  --spacing-small: 8px;
+  --spacing-medium: 12px;
+  --spacing-large: 20px;
+  --spacing-xlarge: 30px;
+  --border-radius-base: 6px; /* Slightly softer radius */
+  --shadow-base: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
+  --max-width-container: 1000px; /* Max width for the app content */
+}
+
+/* Global Resets & Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--background-body);
+  color: var(--text-color-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* REMOVED: display: flex, justify-content, align-items, height: 100vh */
+}
+
+
+.App {
+  max-width: var(--max-width-container);
+  margin: var(--spacing-xlarge) auto; /* Vertical space & horizontal centering */
+  padding: var(--spacing-large) var(--spacing-xlarge);
+  background-color: var(--background-card);
+  border-radius: var(--border-radius-base);
+  box-shadow: var(--shadow-base);
+}
+
+.language-selector {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* Position to the right */
   align-items: center;
-  height: 100vh;
+  margin-bottom: var(--spacing-large);
+  gap: var(--spacing-small);
 }
 
-.enrolForm {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
+.language-selector label {
+  font-size: var(--font-size-small);
+  color: var(--text-color-secondary);
+  font-weight: var(--font-weight-bold);
+}
+
+.language-selector select {
+  padding: var(--spacing-small) var(--spacing-medium);
+  border-radius: var(--border-radius-base);
+  border: 1px solid var(--border-color-medium);
+  font-family: inherit;
+  background-color: var(--background-card); /* Match card background */
+  min-width: 100px; /* Give it some minimum width */
+}
+.language-selector select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+
+.programs {
+  margin-top: var(--spacing-large);
+  /* Optional: Add separator from language selector if needed */
+  /* border-top: 1px solid var(--border-color-light); */
+  /* padding-top: var(--spacing-large); */
+}
+
+.ulEnrol {
+  list-style: none; /* Remove bullets */
+  padding: var(--spacing-medium) var(--spacing-large);
+  margin: 0 0 var(--spacing-xlarge) 0; /* Space below this section */
+  background-color: var(--background-subtle); /* Slight background distinction */
+  border-radius: var(--border-radius-base);
+  border: 1px solid var(--border-color-light);
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  justify-content: space-between; /* Space out program selection and counter */
+  align-items: center;
+  gap: var(--spacing-large); /* Gap between selection and counter */
 }
 
-.enrolForm h2 {
-  text-align: center;
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
+.parentLabels {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-medium); /* Space between radio items */
 }
 
-.enrolForm label {
-  display: block;
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 8px;
-}
-
-
-.enrolForm input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-
-.enrolForm input[type="text"]:focus {
-  border-color: #3e92cc;
-  outline: none;
-}
-
-.enrolForm input[type="submit"] {
-  padding: 12px;
-  border: none;
-  background-color: #3e92cc;
-  color: white;
-  font-size: 16px;
-  border-radius: 5px;
+/* Style individual radio button + label pairs for better control */
+.parentLabels > span, /* Target the FormattedMessage wrapper if it's a span */
+.parentLabels label { /* Or if you wrap radio+text in label */
+  display: inline-flex; /* Align radio and text */
+  align-items: center;
+  gap: var(--spacing-small);
+  font-size: var(--font-size-base);
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.enrolForm input[type="submit"]:hover {
-  background-color: #3489b0;
+.parentLabels input[type="radio"] {
+  /* margin-right: var(--spacing-small); Use gap instead */
+  accent-color: var(--primary-color); /* Modern way to style radio */
+  width: 1em; /* Consistent size */
+  height: 1em;
+  cursor: pointer;
 }
 
-.message {
-  text-align: center;
-  color: #3e92cc;
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 10px;
+/* Style the Enrollment Counter Label */
+.ulEnrol > label {
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-base);
+  white-space: nowrap; /* Prevent wrapping of the counter text */
 }
-
-
-@media (max-width: 480px) {
-  .enrolForm {
-    padding: 15px;
-  }
-  .enrolForm h2 {
-    font-size: 20px;
-  }
-}
-

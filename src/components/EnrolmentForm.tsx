@@ -89,9 +89,9 @@ function EnrolmentForm(props: EnrolmentFormProps) {
           <input type="submit" value={locale === "es" ? "Cancelar" : "Cancel"} className="cancelButton" />
         )}
 
-        <label id="studentMsg" className="message">
-         {welcomeMessage}
-        </label>
+      <label id="studentMsg" className={`message ${welcomeMessage ? 'welcome' : ''}`}>
+        {welcomeMessage}
+      </label>
       </form>
     </div>
   );
